@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"YouTube.etiquetes"}],"uuid":"9269f902c39b44ddb22da2c62f8f02b7"}

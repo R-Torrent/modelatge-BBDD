@@ -1,0 +1,28 @@
+use Òptica
+
+db.createCollection('proveïdors')
+
+db.proveïdors.insertMany([{_id: 1, nom: 'Majorista S.L.', adreça: {carrer: 'Avda. Diagonal', número: '12.542', pis: '4', porta: '3 dcha.', ciutat: 'Barcelona', codi_postal: '08678', país: 'Espanya'}, telèfon: '(+34)932347892', fax: '(+34)936800013', NIF: '34983071J'}, {_id: 2, nom: 'Friedrich Krupp AG', adreça: {carrer: 'de los Madrazo', número: '4', pis: 'bajos', porta: '3 izda.', ciutat: 'Essen', codi_postal: '45145', país: 'Deutschland'}, telèfon: '(+49)0201 88-88999', fax: 'n/a', NIF: '13381508159'}])
+
+db.proveïdors.find().pretty()
+
+db.createCollection('ulleres')
+
+db.ulleres.insert({_id: 1, marca: 'GafeDePasta', proveïdor_id: 1, vidre: {dreta: {graduació: 4.15, color: 'clar'}, esquerra: {graduació: 4.35, color: 'clar'}}, muntura: {tipus: 'pasta', color: 'verd'}, preu: 275.80})
+db.ulleres.insert({_id: 2, marca: 'GafeDePasta', proveïdor_id: 1, vidre: {dreta: {graduació: 2.00, color: 'tint degradat marró M3'}, esquerra: {graduació: 2.25, color: 'tint degradat marró M3'}}, muntura: {tipus: 'flotant', color: 'negre'}, preu: 99.99})
+db.ulleres.insert({_id: 3, marca: 'Zeiss', proveïdor_id: 2, vidre: {dreta: {graduació: 0.50, color: 'clar'}, esquerra: {graduació: 0.50, color: 'clar'}}, muntura: {tipus: 'metàl·lica', color: 'acer'}, preu: 521.12})
+db.ulleres.insert({_id: 4, marca: 'AluminosisÓpticos', proveïdor_id: 1, vidre: {dreta: {graduació: 1.00, color: 'difuminat rosa'}, esquerra: {graduació: 0.75, color: 'difuminat rosa'}}, muntura: {tipus: 'metàl·lica', color: '#8B0000'}, preu: 124.30})
+
+db.ulleres.find().pretty()
+
+db.createCollection('clients')
+
+db.clients.insertMany([{_id: 1, nom: 'Isaac Newton',  adreça: {carrer: 'Gutter Street', número: '221B', pis: 'n/a', porta: 'sure', ciutat: 'London', codi_postal: 'NW1 6XE', país: 'United Kingdom'}, telèfon: '(+44) 020 7224 3688', email: 'info@sherlock-holmes.co.uk', registre: Date()}, {_id: 2, nom: 'María Fernández',  adreça: {carrer: 'Mayor', número: '43', pis: '2º', porta: '1ª', ciutat: 'Talavera de la Reina', codi_postal: '45600', país: 'España'}, telèfon: '925720100', email: 'festejos@talavera.org', registre: Date(), recomentat_per_id: 1}])
+
+db.clients.find().pretty()
+
+db.createCollection('vendes')
+
+db.vendes.insertMany([{_id: 1, import: 521.12, ulleres_id: 3, client_id: 2, venedor: 'Pepito Muchalabia'}, {_id: 2, import: 99.99, ulleres_id: 2, client_id: 2, venedor: 'Juanito Algomenoslabia'}])
+
+db.vendes.find().pretty()

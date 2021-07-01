@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"Spotify.usuaris"}],"uuid":"b73ca614dfed4c82b48ca1c34d7de33c"}

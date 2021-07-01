@@ -1,0 +1,42 @@
+use Pizzeria
+
+db.createCollection('clients')
+
+db.clients.insertMany([{_id: 1, nom: 'John', cognom: 'Rambo', adreça: 'Plaza de Isabel II, s/n', codi_postal: '28013', localitat: 'Madrid', província: 'Madrid', telèfon: '915160600'}, {_id: 2, nom: 'Bruce', cognom: 'Banner', adreça: 'Plaza del Veedor, s/n', codi_postal: '52001', localitat: 'Melilla', província: 'Ciudad Autónoma de Melilla', telèfon: '952685587'}])
+
+db.clients.find().pretty()
+
+db.createCollection('comandes')
+
+db.comandes.insert({_id: 1, registre: Date(), preu_total: 28.95, productes: [{producte_id: 3, quantitat: 2}, {producte_id: 5, quantitat: 1}], client_id: 2, tipus: 'botiga', botiga_id: 1})
+db.comandes.insert({_id: 2, registre: Date(), preu_total: 12.50, productes: [{producte_id: 2, quantitat: 1}], client_id: 2, tipus: 'domicili', botiga_id: 1, repartidor_id: 4, lliurament: 'Sat Jun 12 2021 23:33:57 GMT+0200'})
+db.comandes.insert({_id: 3, registre: Date(), preu_total: 50.90, productes: [{producte_id: 3, quantitat: 3}, {producte_id: 4, quantitat: 1}, {producte_id: 5, quantitat: 2}], client_id: 2, tipus: 'domicili', botiga_id: 1, repartidor_id: 3, lliurament: 'Sat Jun 12 2021 23:21:43 GMT+0200'})
+db.comandes.insert({_id: 4, registre: Date(), preu_total: 18.40, productes: [{producte_id: 1, quantitat: 2}, {producte_id: 6, quantitat: 2}], client_id: 1, tipus: 'botiga', botiga_id: 2})
+
+db.comandes.find().pretty()
+
+db.createCollection('productes')
+
+db.productes.insert({_id: 1, nom: 'Clàssica', categoria: 'pizza', categoria_pizza: 'fixe', descripció: 'anxoves, doble de formatge, xampinyons', imatge: '/image/pizzas/classic.bmp', preu: 8.00})
+db.productes.insert({_id: 2, nom: 'Especial', categoria: 'pizza', categoria_pizza: 'fixe', descripció: 'olivas negras, pepperoni, champiñones, salchicha', imatge: '/image/pizzas/special.bmp', preu: 12.50})
+db.productes.insert({_id: 3, nom: 'Hawaiana', categoria: 'pizza', categoria_pizza: 'promoció_estiu', descripció: 'pinya, bacon', imatge: '/image/pizzas/hawaii.bmp', preu: 12.00})
+db.productes.insert({_id: 4, nom: 'Patty', categoria: 'hamburguesa', descripció: 'cheeseburger maxi-XL', imatge: '/image/burgers/cheeseburger.bmp', preu: 5.00})
+db.productes.insert({_id: 5, nom: 'CocaCola', categoria: 'beguda', descripció: 'pack llaunes 4×33cL', imatge: '/image/drinks/cola.bmp', preu: 4.95})
+db.productes.insert({_id: 6, nom: 'Gin Tonic', categoria: 'beguda', descripció: 'garrafón combinado con fregasuelos', imatge: '/image/drinks/gintonic.jpg', preu: 1.20})
+
+db.productes.find().pretty()
+
+db.createCollection('botigues')
+
+db.botigues.insertMany([{_id: 1, adreça: 'calle del Turco, 13', codi_postal: '28014', localitat: 'Madrid', província: 'Madrid', empleados_id: [1, 3, 4]}, {_id: 2, adreça: 'C/ Calderón de la Barca, 2', codi_postal: '52001', localitat: 'Melilla', província: 'Ciudad Autónoma de Melilla', empleados_id: [2]}])
+
+db.botigues.find().pretty()
+
+db.createCollection('treballadors')
+
+db.treballadors.insert({_id: 1, nom: 'Fernand', cognom: 'Point', NIF: '37644538R', telèfon: '915448220', càrrec: 'cuiner'})
+db.treballadors.insert({_id: 2, nom: 'Paul', cognom: 'Bocuse', NIF: 'Y0948573E', telèfon: '925746378', càrrec: 'cuiner'})
+db.treballadors.insert({_id: 3, nom: 'George', cognom: 'Patton', NIF: '14285570V', telèfon: '910675534', càrrec: 'repartidor'})
+db.treballadors.insert({_id: 4, nom: 'Pepe', cognom: 'Botella', NIF: '00003563K', telèfon: '913941006', càrrec: 'repartidor'})
+
+db.treballadors.find().pretty()

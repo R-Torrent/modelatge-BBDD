@@ -1,0 +1,71 @@
+use Spotify
+
+db.createCollection('usuaris')
+
+db.usuaris.insert({_id: 1, email: 'unusuario@yahoo.com', password: 'babybaby', nom: 'WinstonChurchill', naixement: '1874-11-30', sexe: 'M', país: 'United Kingdom of Great Brital and Ireland', codi_postal: 'OX20 1PP', tipus: 'premium', subscripcions: [2, 3, 4], playlists: [{_id: 1, títol: 'llista_cotxe', cançons: [8, 11, 12], data_creació: '1940-05-10', estat: 'activa'}], follows_artistes: [1], àlbums_favorits: [6, 7], cançons_favorites: [7, 11, 4]})
+db.usuaris.insert({_id: 2, email: 'creator@gmail.com', password: '1234567890', nom: 'Paula34', naixement: '2002-10-02', sexe: 'F', país: 'Regne del Vendrell', codi_postal: '43700', tipus: 'free', playlists: [{_id: 2, títol: 'música romàntica', cançons: [1, 2, 11, 12], data_creació: '2010-11-11', estat: 'esborrada', data_esborrament: '2013-04-22'}, {_id: 3, títol: 'festes amics', cançons: [{cançò_id: 6, afegida_per: 2, data_afegida: 2010-12-21}, {cançò_id: 7, afegida_per: 4, data_afegida: 2010-12-23}], data_creació: '2010-12-21', estat: 'activa - compartida'}], follows_artistes: [1], àlbums_favorits: [1, 3]})
+db.usuaris.insert({_id: 3, email: 'DiegoAlatriste@hotmail.es', password: 'Rocroi1643', nom: 'Alatriste', naixement: '1582-??-??', sexe: 'M', país: 'Confederación Hidrográfica del Tajo', codi_postal: '28011', tipus: 'free', subscripcions: [1], cançons_favorites: [3, 2, 12]})
+db.usuaris.insert({_id: 4, email: 'kungfoopanda@aol.com', password: '89jyh00$', nom: 'agustinagimena', naixement: '1999-01-17', sexe: 'F', país: 'Los Baldíos de Alburquerque', codi_postal: '06510', tipus: 'free', follows_artistes: [2, 3], àlbums_favorits: [3], cançons_favorites: [1, 4, 8, 11]})
+
+db.usuaris.find().pretty()
+
+db.createCollection('subscripcions')
+
+db.subscripcions.insert({_id: 1, usuari_id: 3, data_inici: '1611-03-11', data_renovació: '1612-03-11', forma_pagament: 'targeta', pagaments: [1, 2]})
+db.subscripcions.insert({_id: 2, usuari_id: 1, data_inici: '1889-03-03', data_renovació: '1889-09-03', forma_pagament: 'PayPal', pagaments: [3]})
+db.subscripcions.insert({_id: 3, usuari_id: 1, data_inici: '1889-09-03', data_renovació: '1890-01-03', forma_pagament: 'targeta', pagaments: [4, 5]})
+db.subscripcions.insert({_id: 4, usuari_id: 1, data_inici: '1915-02-17', data_renovació: '1916-01-09', forma_pagament: 'targeta', pagaments: [6]})
+
+db.subscripcions.find().pretty()
+
+db.createCollection('targetes')
+
+db.targetes.insert({número: 5402054447638891, caducitat: '09/23', CVC_CVV: '340', usuari_id: 3})
+db.targetes.insert({número: 5489018132906372, caducitat: '02/24', CVC_CVV: '970', usuari_id: 1})
+
+db.targetes.find().pretty()
+
+db.createCollection('PayPal')
+
+db.PayPal.insert({_id: 1, usuari_id: 1, account: 'Omdurman1898'})
+
+db.PayPal.find().pretty()
+
+db.createCollection('pagaments')
+
+db.pagaments.insert({_id: 1, data: '1611-03-11', subscripció: 1, total: 12.43, moneda: 'USD'})
+db.pagaments.insert({_id: 2, data: '1611-09-11', subscripció: 1, total: 23400, moneda: 'UGX'})
+db.pagaments.insert({_id: 3, data: '1889-03-03', subscripció: 2, total: 9.12, moneda: 'GIP'})
+db.pagaments.insert({_id: 4, data: '1889-09-03', subscripció: 3, total: 937, moneda: 'SDG'})
+db.pagaments.insert({_id: 5, data: '1889-11-03', subscripció: 3, total: 18900, moneda: 'LSL'})
+db.pagaments.insert({_id: 6, data: '1915-02-17', subscripció: 4, total: 435, moneda: 'TRY'})
+
+db.pagaments.find().pretty()
+
+db.createCollection('cançons')
+
+db.cançons.insertMany([{_id: 1, títol: 'Solo es amor', durada: '3:37', reproduccions: 23318501, artista_id: 1, àlbum_id: 7}, {_id: 3, títol: 'Dime porqué', durada: '3:36', reproduccions: 17567433, artista_id: 1, àlbum_id: 7}])
+db.cançons.insertMany([{_id: 2, títol: '¿Porqué Me Has Engañado?', durada: '4:03', reproduccions: 34809232, artista_id: 1, àlbum_id: 6}])
+db.cançons.insertMany([{_id: 4, títol: 'Modern Man', durada: '1:58', reproduccions: 27003, artista_id: 2, àlbum_id: 1}, {_id: 6, títol: 'Entropy', durada: '2:24', reproduccions: 18655, artista_id: 2, àlbum_id: 1}, {_id: 5, títol: 'Misery and Famine', durada: '2:35', reproduccions: 21900, artista_id: 2, àlbum_id: 1}])
+db.cançons.insertMany([{_id: 7, títol: 'Infected', durada: '4:08', reproduccions: 39871, artista_id: 2, àlbum_id: 3}, {_id: 8, títol: '21st Century (Digital Boy)', durada: '2:47', reproduccions: 44735, artista_id: 2, àlbum_id: 3}, {_id: 9, títol: 'Stranger than Fiction', durada: '2:20', reproduccions: 356071, artista_id: 2, àlbum_id: 3}])
+db.cançons.insertMany([{_id: 10, títol: 'The Answer', durada: '3:21', reproduccions: 18324, artista_id: 2, àlbum_id: 4}])
+db.cançons.insertMany([{_id: 11, títol: 'Foxy Lady', durada: '3:10', reproduccions: 175698040, artista_id: 3, àlbum_id: 2}, {_id: 13, títol: 'Manic Depression', durada: '3:31', reproduccions: 134283071, artista_id: 3, àlbum_id: 2}])
+db.cançons.insertMany([{_id: 12, títol: 'Castles Made of Sand', durada: '2:46', reproduccions: 23318501, artista_id: 3, àlbum_id: 5}])
+
+db.cançons.find().pretty()
+
+db.createCollection('àlbums')
+
+db.àlbums.insertMany([{_id: 1, títol: 'Against the Grain', any_publicació: 1990, portada: '/Against_the_Grain_(Bad_Religion_album)#/media/File:BadReligionAgainstTheGrain.jpg', artista_id: 2, cançons: [4, 6, 5]}, {_id: 3, títol: 'Stranger Than Fiction', any_publicació: 1994, portada: '/Stranger_Than_Fiction_(Bad_Religion_album)#/media/File:BadReligionStrangerThanFiction.jpg', artista_id: 2, cançons: [7, 8, 9]}, {_id: 4, títol: 'Generator', any_publicació: 1991, portada: '/Generator_(Bad_Religion_album)#/media/File:BadReligionGenerator.jpg', artista_id: 2, cançons: [10]}])
+db.àlbums.insertMany([{_id: 2, títol: 'Are You Experienced', any_publicació: 1967, portada: '/Are_You_Experienced#/media/File:AreyouexpUK.jpg', artista_id: 3, cançons: [11, 13]}, {_id: 5, títol: 'Axis: Bold as Love', any_publicació: 1967, portada: '/Axis:_Bold_as_Love#/media/File:Axiscover.jpg', artista_id: 3, cançons: [12]}])
+db.àlbums.insertMany([{_id: 6, títol: 'Simplemente amor', any_publicació: 2000, portada: '/images/I/71H4MVgxJZL._SS500_.jpg', artista_id: 1, cançons: [2]}, {_id: 7, títol: 'No puedo estar sin él', any_publicació: 1999, portada: '/images/I/71rI+5f7mPL._SS500_.jpg', artista_id: 1, cançons: [1, 3]}])
+
+db.àlbums.find().pretty()
+
+db.createCollection('artistes')
+
+db.artistes.insert({_id: 1, nom: 'Camela', imatge: '/File:Camela2011.jpg', àlbums: [6, 7]})
+db.artistes.insert({_id: 2, nom: 'Bad Religion', imatge: '/Bad_Religion#/media/Archivo:Bad_Religion_2005-6-22.jpg', àlbums: [1, 3, 4], artistes_semblants: [3]})
+db.artistes.insert({_id: 3, nom: 'Jimi Hendrix', imatge: '/Jimi_Hendrix#/media/Archivo:Jimi_Hendrix_1967.png', àlbums: [2, 5], artistes_semblants: [2]})
+
+db.artistes.find().pretty()

@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"YouTube.usuaris"}],"uuid":"48d30f5f1f5442fa8338ab1c30f7c032"}

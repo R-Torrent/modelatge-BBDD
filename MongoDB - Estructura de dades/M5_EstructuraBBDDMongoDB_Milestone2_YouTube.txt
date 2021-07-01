@@ -1,0 +1,36 @@
+use YouTube
+
+db.createCollection('usuaris')
+
+db.usuaris.insert({_id: 1, email: 'uncorreo@yahoo.com', password: '2rTe43$mq1', nom: 'perroflauta', naixement: '1973-02-11', sexe: 'F', país: 'Andorra Oriental', codi_postal: 'YH242', canal: {_id: 1, nom: 'CanalCiència', descripció: 'Finestra oberta al món de la ciència', data_creació: Date(), subscriptors: [2, 3]}, playlists: [{_id: 3, nom: 'Llista_maca', data_creació: Date(), estat: 'pública', vídeos: [3, 5]}, {_id: 4, nom: 'chill-out', data_creació: Date(), estat: 'pública', vídeos: [1, 4]}]})
+db.usuaris.insert({_id: 2, email: 'spamforever@gmail.com', password: 'RY#988MNbw', nom: 'Long_John_Silver', naixement: '1850-11-13', sexe: 'M', país: 'República Popular de Sant Gervasi de Cassoles', codi_postal: '78-210', canals_subscrit: [1, 2], playlists: [{_id: 1, nom: '*favorits*', data_creació: Date(), estat: 'pública', vídeos: [1, 2, 3, 4, 5]}, {_id: 2, nom: 'coneixements', data_creació: Date(), estat: 'privada', vídeos: [2, 3]}]})
+db.usuaris.insert({_id: 3, email: 'lostmail@playboy.com', password: 'JUwq433_02', nom: 'crocket093', naixement: '1346-08-26', sexe: 'M', país: 'Prats de Montjuïc', codi_postal: '423A', canal: {_id: 2, nom: 'Hipnotismo cárnico', descripció: 'Oh là là', data_creació: Date(), subscriptors: [2]}, canals_subscrit: [1]})
+
+db.usuaris.find().pretty()
+
+db.createCollection('vídeos')
+
+db.vídeos.insert({_id: 1, títol: 'Hilary Hahn plays J.S.Bach Violin Concerto No.1 in a minor BWV1041-Deutsche Kammerphil. Bremen', descripció: 'Johann Sebastian Bach\nConcerto for Violin No.1 in A minor (BWV 1041)\nDeutsche Kammerphilharmonie Bremen\nConductor: Omer Meir Wellber\nViolin : Hilary Hahn', grandària: 32283623, durada: '0:15:25', thumbnail: 'AOn4CLBYpckiT8FVoBX4tFErn9UjAx9kaA', reproduccions: 294379, likes: [{usuari_id:2, data_like: Date()}, {usuari_id:3, data_like: Date()}], dislikes: [], estat: 'públic', etiquetes_ids : [2], comentaris_ids: [3], publicat_per_id: 1, data_publicació: Date()})
+db.vídeos.insert({_id: 2, títol: 'What is the Ultraviolet Catastrophe?', descripció: 'This video provides a detailed explanation of the ultraviolet catastrophe and Max Planck\'s solution to the problem. The work of Rayleigh and Jeans is discussed in detail, as well as the quantum hypothesis proposed by Planck.', grandària: 84740148, durada: '0:40:28', thumbnail: 'AOn4CLApkp1cWwczrbA9NoeMXHCvZaNgUg', reproduccions: 544289, likes: [{usuari_id:2, data_like: Date()}], dislikes: [{usuari_id:3, data_dislike: Date()}], estat: 'públic', etiquetes_ids : [1, 3], publicat_per_id: 1, data_publicació: Date()})
+db.vídeos.insert({_id: 3, títol: 'The Legend of Question Six - Numberphile', descripció: 'Simon Pampena discusses the famous Question 6 from the 1988 International Mathematical Olympiad. More links below...', grandària: 18288236, durada: '0:08:44', thumbnail: 'AOn4CLATNICY5H-DVUF5QGVHEDTAxhBROg', reproduccions: 3443898, likes: [], dislikes: [], estat: 'ocult', etiquetes_ids : [1, 3], publicat_per_id: 1, data_publicació: Date()})
+db.vídeos.insert({_id: 4, títol: 'Belly dance Alla Kushnir (Leila)', descripció: 'City festival in Nikolaev, Ukraine 2006', grandària: 11796610, durada: '0:05:38', thumbnail: 'AOn4CLAmlF6DbNZ-jCM5ReCl40At07re0Q', reproduccions: 967059, likes: [{usuari_id:2, data_like: Date()}, {usuari_id:1, data_like: Date()}], dislikes: [], estat: 'privat', etiquetes_ids : [1, 2], comentaris_ids: [2], publicat_per_id: 3, data_publicació: Date()})
+db.vídeos.insert({_id: 5, títol: 'World of Warships - Georgia Still On My Mind', descripció: 'And the prize for least imaginative video title on the subject of USS Georgia this week goes to The Mighty Jingles!', grandària: 25826898, durada: '0:12:20', thumbnail: 'AOn4CLCeF95kgCauXBYbvzO5VBENWVvStA', reproduccions: 123175, likes: [{usuari_id:1, data_like: Date()}, {usuari_id:3, data_like: Date()}], dislikes: [], estat: 'públic', comentaris_ids: [1, 4], publicat_per_id: 2, data_publicació: Date()})
+
+db.vídeos.find().pretty()
+
+db.createCollection('etiquetes')
+
+db.etiquetes.insert({_id: 1, nom: 'Oh!', vídeos: [2, 3, 4]})
+db.etiquetes.insert({_id: 2, nom: 'artístico', vídeos: [1, 4]})
+db.etiquetes.insert({_id: 3, nom: 'divulgación científica', vídeos: [2, 3]})
+
+db.etiquetes.find().pretty()
+
+db.createCollection('comentaris')
+
+db.comentaris.insert({_id: 1, text: 'El mejor bideo que he bisto!', data_creació: Date(), usuari_id: 3, vídeo_comentat: 5, likes: [], dislikes: [{usuari_id:2, data_dislike: Date()}, {usuari_id:1, data_dislike: Date()}]})
+db.comentaris.insert({_id: 2, text: 'gràcies per pujar aquesta maravella', data_creació: Date(), usuari_id: 1, vídeo_comentat: 4, likes: [{usuari_id:2, data_like: Date()}], dislikes: []})
+db.comentaris.insert({_id: 3, text: 'kina merda', data_creació: Date(), usuari_id:3, vídeo_comentat: 1, likes: [], dislikes: [{usuari_id:1, data_dislike: Date()}]})
+db.comentaris.insert({_id: 4, text: 'aquell tipus ho fa molt bé', data_creació: Date(), usuari_id: 1, vídeo_comentat: 5, likes: [{usuari_id:2, data_like: Date()}], dislikes: [{usuari_id:3, data_dislike: Date()}]})
+
+db.comentaris.find().pretty()
